@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code 477 E-Learning Slide</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      font-family: "Segoe UI", "Aptos", "Trebuchet MS", sans-serif;
+      background: linear-gradient(135deg, #1a2a3a 0%, #0f1a26 100%);
+      color: #ffffff;
+    }
+
+    #sl-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #sl-stage {
+      position: absolute;
+      width: 1920px;
+      height: 1080px;
+      transform-origin: top left;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a2a3a 0%, #0f1a26 100%);
+      box-shadow: 0 30px 100px rgba(0,0,0,0.4);
+    }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(100,150,180,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100,150,180,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.02));
+      pointer-events: none;
+    }
+
+    .glow-ring {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(10px);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .card-glass {
+      background: #1e3a52;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .accent-line {
+      background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+      box-shadow: 0 0 18px rgba(231, 76, 60, 0.25);
+    }
+
+    .pulse-dot {
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+      50% {
+        transform: scale(1.16);
+        opacity: 1;
+      }
+    }
+
+    .float-in {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: floatIn 0.7s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    @keyframes floatIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hotspot-btn {
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      cursor: pointer;
+    }
+
+    .hotspot-btn:hover,
+    .hotspot-btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+      outline: none;
+    }
+
+    .image-thumbnail {
+      cursor: pointer;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .image-thumbnail:hover {
+      transform: scale(1.02);
+      box-shadow: 0 16px 40px rgba(231, 76, 60, 0.3);
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #1e3a52;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 32px;
+      max-width: 80vw;
+      max-height: 80vh;
+      overflow: auto;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(231, 76, 60, 0.9);
+      border: none;
+      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.22s ease;
+      color: white;
+      font-size: 24px;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(231, 76, 60, 1);
+    }
+
+    .modal-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full w-full">
+  <div id="sl-wrapper" aria-label="Responsive e-learning slide wrapper">
+   <div id="sl-stage" role="img" aria-label="Training slide explaining when to use code 477 for damaged CIP guy grips, anchors, hardware or guys">
+    <div class="grid-overlay"></div>
+    <div class="glow-ring w-[420px] h-[420px] bg-amber-300/20 top-[40px] left-[90px]"></div>
+    <div class="glow-ring w-[520px] h-[520px] bg-cyan-300/10 bottom-[40px] right-[80px]"></div>
+    <header class="absolute top-0 left-0 right-0 px-20 pt-16">
+     <div class="float-in flex items-center gap-5">
+      <div class="h-16 w-16 rounded-2xl card-glass flex items-center justify-center text-3xl">
+       ⚠️
+      </div>
+      <div>
+       <h1 class="mt-2 text-[64px] leading-none font-black tracking-tight text-white">Code 477 - CIP Guying</h1>
+      </div>
+     </div>
+     <div class="float-in delay-1 mt-8 w-[520px] h-auto"><img src="https://raw.githubusercontent.com/pushkapatrick-design/ancillary-providers/main/Screenshot%202026-02-24%20134104.png" alt="Code 477 indicator" loading="lazy" style="width: 100%; height: auto; border-radius: 12px;" onerror="console.error('Image failed to load:', this.src); this.style.background='#e74c3c'; this.alt='Image unavailable';">
+     </div>
+    </header>
+    <main class="absolute inset-x-0 top-[240px] bottom-[56px] px-20">
+     <div class="grid grid-cols-2 gap-12 h-full">
+      <section class="float-in delay-2 flex flex-col gap-6 overflow-y-auto">
+       <div class="card-glass rounded-[34px] px-10 py-8 flex-shrink-0">
+        <div class="flex items-start gap-5">
+         <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-[30px] text-white font-black flex-shrink-0">
+          ✓
+         </div>
+         <div>
+          <h3 class="text-[30px] font-black tracking-tight text-white">Report details</h3>
+          <p class="mt-3 text-[24px] leading-[1.5] text-white/80">Provide the <span class="font-bold text-white">CIP name</span> and a <span class="font-bold text-white">description of the condition</span> when using Code 477.</p>
+         </div>
+        </div>
+       </div>
+       <div class="card-glass rounded-[34px] px-10 py-8 flex-shrink-0">
+        <div class="flex items-start gap-5">
+         <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-[30px] text-white font-black flex-shrink-0">
+          1
+         </div>
+         <div>
+          <h3 class="text-[24px] font-black tracking-tight text-white">Identify Damage</h3>
+          <p class="mt-2 text-[24px] leading-[1.5] text-white/80">Look for broken strands, bent hardware, loosened components, or visible wear on CIP guy grips and anchors.</p>
+         </div>
+        </div>
+       </div>
+       <div class="card-glass rounded-[34px] px-10 py-8 flex-shrink-0">
+        <div class="flex items-start gap-5">
+         <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-600 text-[30px] text-white font-black flex-shrink-0">
+          2
+         </div>
+         <div>
+          <h3 class="text-[24px] font-black tracking-tight text-white">Document Condition</h3>
+          <p class="mt-2 text-[24px] leading-[1.5] text-white/80">Take photos and note the specific location and type of damage for accurate reporting.</p>
+         </div>
+        </div>
+       </div>
+      </section>
+      <section class="float-in delay-3 flex flex-col gap-8 items-center justify-center">
+       <div class="w-full h-full rounded-[34px] card-glass overflow-hidden flex items-center justify-center p-6"><img id="expandable-image" class="image-thumbnail w-full h-full object-cover rounded-[28px]" src="https://raw.githubusercontent.com/pushkapatrick-design/OH-CMP-Mod-4-Code-477/main/code%20477.png" alt="Damage example - click to expand" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#334155'; this.alt='Image unavailable';">
+       </div>
+      </section>
+     </div>
+    </main>
+   </div>
+  </div><!-- Modal for expanded image -->
+  <div id="image-modal" class="modal-overlay">
+   <div class="modal-content"><button class="modal-close-btn" aria-label="Close image">✕</button> <img id="modal-image" class="modal-image" src="" alt="Expanded damage example">
+   </div>
+  </div>
+  <script>
+    (function () {
+      const wrapper = document.getElementById('sl-wrapper');
+      const stage = document.getElementById('sl-stage');
+      const baseWidth = 1920;
+      const baseHeight = 1080;
+
+      function scaleStage() {
+        const iframeW = wrapper.clientWidth;
+        const iframeH = wrapper.clientHeight;
+        const scale = Math.min(iframeW / baseWidth, iframeH / baseHeight);
+
+        const scaledWidth = baseWidth * scale;
+        const scaledHeight = baseHeight * scale;
+        const left = (iframeW - scaledWidth) / 2;
+        const top = (iframeH - scaledHeight) / 2;
+
+        stage.style.transform = 'translate(' + left + 'px, ' + top + 'px) scale(' + scale + ')';
+      }
+
+      const observer = new ResizeObserver(scaleStage);
+      observer.observe(wrapper);
+      scaleStage();
+
+      // Modal functionality
+      const expandableImage = document.getElementById('expandable-image');
+      const imageModal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      const modalCloseBtn = document.querySelector('.modal-close-btn');
+
+      expandableImage.addEventListener('click', function () {
+        modalImage.src = this.src;
+        imageModal.classList.add('active');
+      });
+
+      modalCloseBtn.addEventListener('click', function () {
+        imageModal.classList.remove('active');
+      });
+
+      imageModal.addEventListener('click', function (e) {
+        if (e.target === imageModal) {
+          imageModal.classList.remove('active');
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+          imageModal.classList.remove('active');
+        }
+      });
+    })();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e521a46f6d82b5e',t:'MTc3NDk4ODkyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
